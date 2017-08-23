@@ -72,7 +72,7 @@ All times have been adjusted to Eastern Standard Time. If you start at the botto
 
 And when you start at the top and move down, you can see the dip in PAR caused by the eclipse, and how it moved across the country!
 
-```{r, fig.width=9, fig.height=8}
+```{r, fig.width=9, fig.height=7.5}
 
 # arrange reserves by longitude and assign a factor level
 f_reservename <- datfull %>%
@@ -97,7 +97,7 @@ ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR)) +
 
 Trying some different colors and axis labels. The first of these, with two colors, is my favorite.
 
-```{r, fig.width=9, fig.height=8}
+```{r, fig.width=9, fig.height=7.5}
 ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
     geom_joy(stat = "identity", alpha = 0.7) +
     scale_fill_cyclical(values = c("cadetblue3", "lightslategray")) +
