@@ -81,11 +81,96 @@ datfull$Reserve.Name <- factor(datfull$Reserve.Name, levels = unique(f_reservena
 ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR)) +
     geom_joy(stat = "identity", alpha = 0.7, fill = "cadetblue3") +
     theme_bw() +
-    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21) \nEastern Standard Time") +
-    ylab("Reserve Name (West on top; East on bottom)") +
-    xlab("Date and Time - Eastern Standard Time")
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name \nWest on top; East on bottom") +
+    xlab("Date - Time (Eastern Standard Time)")
 ```
 
 ![](Eclipse_visualization_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
+
+Trying some different colors and axis labels. The first of these, with two colors, is my favorite.
+
+
+```r
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.7) +
+    scale_fill_cyclical(values = c("cadetblue3", "lightslategray")) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name \nWest on top; East on bottom") +
+    xlab("Date - Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+I might be a little loopy after looking at this many graphs.
+
+
+```r
+library(RColorBrewer)
+
+rainbowlist <- brewer.pal(9, "Set1")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = rainbowlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```r
+colorlist <- brewer.pal(11, "Spectral")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+
+```r
+colorlist <- brewer.pal(3, "BuPu")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-4-3.png)<!-- -->
+
+```r
+colorlist <- brewer.pal(9, "PuBuGn")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
+
+```r
+colorlist <- brewer.pal(5, "Paired")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+```
+
+![](Eclipse_visualization_files/figure-html/unnamed-chunk-4-5.png)<!-- -->
 

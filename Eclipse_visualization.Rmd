@@ -72,7 +72,7 @@ All times have been adjusted to Eastern Standard Time. If you start at the botto
 
 And when you start at the top and move down, you can see the dip in PAR caused by the eclipse, and how it moved across the country!
 
-```{r, fig.width=10, fig.height=10}
+```{r, fig.width=9, fig.height=8}
 
 # arrange reserves by longitude and assign a factor level
 f_reservename <- datfull %>%
@@ -89,9 +89,79 @@ datfull$Reserve.Name <- factor(datfull$Reserve.Name, levels = unique(f_reservena
 ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR)) +
     geom_joy(stat = "identity", alpha = 0.7, fill = "cadetblue3") +
     theme_bw() +
-    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21) \nEastern Standard Time") +
-    ylab("Reserve Name (West on top; East on bottom)") +
-    xlab("Date and Time - Eastern Standard Time")
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name \nWest on top; East on bottom") +
+    xlab("Date - Time (Eastern Standard Time)")
 ```
 
+
+Trying some different colors and axis labels. The first of these, with two colors, is my favorite.
+
+```{r, fig.width=9, fig.height=8}
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.7) +
+    scale_fill_cyclical(values = c("cadetblue3", "lightslategray")) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name \nWest on top; East on bottom") +
+    xlab("Date - Time (Eastern Standard Time)")
+```
+
+I might be a little loopy after looking at this many graphs.
+
+```{r}
+
+library(RColorBrewer)
+
+rainbowlist <- brewer.pal(9, "Set1")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = rainbowlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+
+
+colorlist <- brewer.pal(11, "Spectral")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+
+
+colorlist <- brewer.pal(3, "BuPu")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+
+
+colorlist <- brewer.pal(9, "PuBuGn")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+
+
+colorlist <- brewer.pal(5, "Paired")
+ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR, fill = Reserve.Name)) +
+    geom_joy(stat = "identity", alpha = 0.8) +
+    scale_fill_cyclical(values = colorlist) +
+    theme_bw() +
+    ggtitle("PAR at all primary SWMP stations, \n8/20 and 8/21 (solar eclipse on 8/21)") +
+    ylab("Reserve Name (West on top; East on bottom)") +
+    xlab("Date and Time (Eastern Standard Time)")
+
+
+```
 
