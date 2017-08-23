@@ -4,7 +4,6 @@ date: "`r Sys.Date()`"
 output: 
     html_document:
         keep_md: true
-        code_folding: 'hide'
 
 ---
 
@@ -14,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Data wrangling  
 
-I downloaded temp and PAR data for all reserves, from 8/20/2017 - 8/22/2017, around 08:00 CST on 8/22. All times are in local standard time, which could be an interesting way to start looking at things, but I will eventually want to put everything in GMT.  
+I used the "Custom Query" from the CDMO's [Advanced Query System](http://cdmo.baruch.sc.edu/aqs/) to download temp and PAR data for all reserves from 8/20/2017 0:00 (local standard time) - 8/22/2017 8:00 (CST; when I downloaded it). All times in the downloaded file were in local standard time. Along the way, I converted them to Eastern Standard Time, so we could look at everything on the same time scale.  
 
 I started by opening a few of my favorite packages, reading in the data, and seeing what I had to work with. There were some trailing spaces (quite a few, actually) in the station information file; turns out there's a command that can be specified within `read.csv()` to elminate white space as you're importing a file: `strip.white = TRUE`. That actually didn't work for station names in my main data file - not sure why - but Stack Overflow had an answer; writing a custom function to trim trailing spaces. 
 
@@ -62,7 +61,7 @@ datfull <- datfull %>%
 ```
 
 
-### Joyplots!!! 
+### Graphing, with a Joyplot!!! 
 
 
 The eclipse started along the west coast, and moved east. It was morning at our west coast reserves. In the following graph, the westernmost MET station is at the top, and the easternmost is at the bottom.  
@@ -94,4 +93,5 @@ ggplot(datfull, aes(x = datetimeEST, y = Reserve.Name, height= TotPAR)) +
     ylab("Reserve Name (West on top; East on bottom)") +
     xlab("Date and Time - Eastern Standard Time")
 ```
+
 
